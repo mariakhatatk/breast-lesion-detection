@@ -49,11 +49,11 @@ The pipeline includes:
 
 ---
 
-# Detection Architecture
+## Detection Architecture
 
-![Architecture](results/architecture_diagram.png)
+The following diagram illustrates the proposed breast lesion detection framework integrating multiple deep learning models.
 
-The detection architecture integrates multiple deep learning models to analyze lesion regions in mammography images and evaluate detection performance.
+![Detection Architecture](results/detailed_detection_architecture_flow.png)
 
 ---
 
@@ -61,13 +61,19 @@ The detection architecture integrates multiple deep learning models to analyze l
 
 The repository includes experiment results and model comparison graphs.
 
-### Model Comparison
+## Model Performance Results
 
-![Model Comparison](results/model_comparison_graph.png)
+### Model Comparison Table
 
-### Complexity vs Accuracy
+![Model Comparison Table](results/comparisontableofmodels.png)
 
-![Complexity Accuracy](results/complexity_vs_accuracy.png)
+---
+
+### Model Complexity vs Accuracy
+
+![Model Complexity](results/model_complexity_accuracy.png)
+
+---
 
 ### Cross Dataset Generalization
 
@@ -75,8 +81,21 @@ The repository includes experiment results and model comparison graphs.
 
 ---
 
-###![Detection Architecture](architecture_diagram.png)
+### mAP@50 Comparison
+
+![mAP Comparison](results/map_comparison.png)
+
 ---
+
+### Model Performance Comparison
+
+![Performance Comparison](results/model_performance_comparison.png)
+
+---
+
+### Training Time Comparison
+
+![Training Time](results/training_time_comparison.png)
 
 # Evaluation Metrics
 
