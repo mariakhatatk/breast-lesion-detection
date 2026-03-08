@@ -69,6 +69,16 @@ The repository includes experiment results and model comparison graphs.
 
 ---
 
+## Detection Architecture
+
+![Detection Architecture](results/detailed_detection_architecture_flow.png)
+
+---
+
+## Data Processing Pipeline
+
+![Pipeline](results/data_processing_pipeline.png)
+
 ### Model Complexity vs Accuracy
 
 ![Model Complexity](results/model_complexity_accuracy.png)
