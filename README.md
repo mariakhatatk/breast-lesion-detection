@@ -75,6 +75,9 @@ The repository includes experiment results and model comparison graphs.
 
 ---
 
+###![Detection Architecture](architecture_diagram.png)
+---
+
 # Evaluation Metrics
 
 Models are evaluated using the following metrics:
