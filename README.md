@@ -1,25 +1,31 @@
-# breast-lesion-detection
-Breast lesion detection using YOLOv8, Mamba, Faster R-CNN, DETR and Vision Transformer
 # Breast Lesion Detection using Deep Learning
 
-This project evaluates multiple deep learning models for breast lesion detection in mammography images.
+This project implements and compares multiple deep learning models for breast lesion detection in mammography images.
 
-Models used:
+## Models Used
+
 - YOLOv8n
 - YOLOv8m
 - YOLOv8 + Mamba
 - Faster R-CNN
 - DETR
-- Vision Transformer
+- Vision Transformer (ViT)
 
-Datasets:
-- CBIS-DDSM
-- INbreast
+## Datasets
 
-Evaluation Metrics:
-- Precision
-- Recall
-- F1-score
-- mAP@50
+This project uses two public mammography datasets:
 
-The project also analyzes model complexity, training time, and cross-dataset generalization.
+- CBIS-DDSM  
+https://www.cancerimagingarchive.net/collection/cbis-ddsm/
+
+- INbreast  
+https://www.kaggle.com/datasets/ramanathansp20/inbreast-dataset
+
+Note: Large raw datasets are not included in this repository.
+
+## Installation
+
+Install required dependencies:
+
+```bash
+pip install -r requirements.txt
