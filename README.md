@@ -1,14 +1,39 @@
 # Multi-Model Breast Lesion Detection using Deep Learning
 
-This repository contains the implementation of a deep learning framework for automated breast lesion detection in mammography images. The project evaluates multiple state-of-the-art object detection and transformer-based architectures to analyze lesion localization performance and model generalization across different medical imaging datasets.
+This repository presents a deep learning framework for automated breast lesion detection in mammography images. The system evaluates multiple state-of-the-art object detection and transformer-based architectures including **YOLOv8, Faster R-CNN, DETR, Vision Transformer (ViT), and a hybrid YOLOv8 + Mamba model**.
 
-The system integrates convolutional detection models and transformer architectures to compare detection accuracy, computational complexity, and cross-dataset generalization capability.
+The framework is trained and evaluated on two publicly available mammography datasets: **CBIS-DDSM** and **INBreast**. The goal is to analyze model detection accuracy, computational complexity, and cross-dataset generalization capability for reliable breast cancer detection.
 
 ---
 
-# Implemented Models
+# Detection Architecture
 
-The following models were implemented and evaluated:
+![Detection Architecture](results/detailed_detection_architecture_flow.png)
+
+The detection architecture integrates CNN-based object detection models and transformer-based architectures. Feature extraction is performed using convolutional or transformer encoders, followed by lesion localization through bounding box prediction. The Mamba state-space module enhances contextual modeling for improved feature representation.
+
+---
+
+# Data Processing Pipeline
+
+![Data Processing Pipeline](results/dataprecrossingpipeline.png)
+
+The preprocessing pipeline includes:
+
+- CLAHE contrast enhancement
+- Image normalization
+- Image resizing
+- ROI mask extraction
+- Bounding box generation
+- Dataset splitting (train / validation / test)
+
+These preprocessing steps improve lesion visibility and ensure consistent model training.
+
+---
+
+# Models Implemented
+
+The following deep learning models were implemented and evaluated:
 
 - YOLOv8n
 - YOLOv8m
@@ -17,75 +42,43 @@ The following models were implemented and evaluated:
 - DETR (Detection Transformer)
 - Vision Transformer (ViT)
 
-These models were trained and evaluated using standardized object detection metrics including Precision, Recall, F1-Score, and Mean Average Precision (mAP@50).
-
----
-
-# Datasets
-
-Two publicly available mammography datasets were used in this study.
-
-## CBIS-DDSM
-
-Curated Breast Imaging Subset of the Digital Database for Screening Mammography.
-
-Dataset link:
-
-https://www.cancerimagingarchive.net/collection/cbis-ddsm/
-
-Citation:
-
-Lee RS, Gimenez F, Hoogi A, Rubin DL. Curated Breast Imaging Subset of DDSM. The Cancer Imaging Archive, 2017.
-
----
-
-## INBreast
-
-A high-resolution mammography dataset for breast cancer detection research.
-
-Dataset link:
-
-https://www.kaggle.com/datasets/ramanathansp20/inbreast-dataset
-
-Citation:
-
-Moreira IC et al. INbreast: Toward a Full-Field Digital Mammographic Database. Academic Radiology, 2012.
-
----
-
-# Detection Architecture
-
-The proposed detection architecture integrates multiple deep learning models for lesion localization and classification.
-
-![Detection Architecture](results/detection_architecture.png)
-
-The framework performs feature extraction using CNN or transformer encoders and applies different detection branches including YOLOv8, Faster-R-CNN, DETR, and Vision Transformer. Context modeling using the Mamba module enhances spatial representation for improved lesion detection.
-
----
-
-# Data Processing Pipeline
-
-The following pipeline illustrates the preprocessing and training workflow used in the project.
-
-![Data Processing Pipeline](results/data_processing_pipeline.png)
-
-Pipeline steps include:
-
-1. Dataset acquisition
-2. CLAHE contrast enhancement
-3. Image normalization and resizing
-4. ROI mask processing
-5. Bounding box generation
-6. Dataset splitting (train/validation/test)
-7. Model training and evaluation
+All models were trained using the same preprocessing pipeline to ensure fair comparison.
 
 ---
 
 # Experimental Results
 
+## Model Performance Comparison
+
+![Model Performance](results/modelperformancecomparison.jpg)
+
+This graph compares the detection performance of all implemented models using **Precision, Recall, and F1-Score** metrics.
+
+YOLOv8 + Mamba achieves the highest overall performance due to improved contextual feature modeling.
+
+---
+
+## Mean Average Precision (mAP@50)
+
+![mAP Comparison](results/map.jpg)
+
+The **YOLOv8 + Mamba architecture achieved the highest mAP@50 score**, indicating superior lesion localization capability compared to the baseline models.
+
+---
+
+## Model Complexity vs Accuracy
+
+![Accuracy Comparison](results/accuracy.jpg)
+
+This analysis demonstrates the relationship between **model complexity and detection accuracy**. YOLOv8 models provide a strong balance between computational efficiency and performance.
+
+---
+
 ## Model Comparison Table
 
-![Model Comparison](results/comparisontableofmodels.png)
+![Model Table](results/comparisontableofmodels.png)
+
+The comparison table summarizes the detection performance of all models using standard evaluation metrics.
 
 | Model | Precision | Recall | F1 Score | mAP@50 |
 |------|------|------|------|------|
@@ -96,42 +89,61 @@ Pipeline steps include:
 | DETR | 0.83 | 0.81 | 0.82 | 0.85 |
 | Vision Transformer | 0.80 | 0.78 | 0.79 | 0.83 |
 
-The YOLOv8 + Mamba architecture achieved the best detection performance across all evaluation metrics.
+The results demonstrate that the hybrid **YOLOv8 + Mamba architecture provides the best detection performance** across multiple evaluation metrics.
 
 ---
 
-# Model Complexity vs Accuracy
+## Training Time Comparison
 
-![Complexity Accuracy](results/model_complexity_accuracy.png)
+![Training Time](results/comparison%20model.jpg)
 
-The comparison highlights the trade-off between model parameter size and detection accuracy. YOLOv8 + Mamba achieves the highest mAP while maintaining moderate model complexity.
-
----
-
-# Cross-Dataset Generalization
-
-![Cross Dataset](results/cross_dataset_generalization.png)
-
-Cross-dataset evaluation shows the ability of models trained on CBIS-DDSM to generalize to the INBreast dataset.
+Training time comparison shows that **YOLO-based architectures train faster**, while transformer-based models require higher computational resources.
 
 ---
 
-# mAP@50 Comparison
+## Model Performance Visualization
 
-![mAP Comparison](results/map_comparison.png)
+![Performance Model](results/performancemodel.jpg)
 
-The YOLOv8 + Mamba model achieved the highest detection accuracy with an mAP@50 of 0.90.
-
----
-
-# Training Time Comparison
-
-![Training Time](results/training_time_comparison.png)
-
-The training time comparison shows that lightweight YOLO models train faster than transformer-based detection models.
+The performance visualization highlights detection efficiency and accuracy differences among the evaluated architectures.
 
 ---
 
-# Installation
+# Dataset
 
-Install required dependencies using:
+This project uses two publicly available mammography datasets.
+
+### CBIS-DDSM
+
+Curated Breast Imaging Subset of the Digital Database for Screening Mammography.
+
+Dataset link:
+
+https://www.cancerimagingarchive.net/collection/cbis-ddsm/
+
+Reference:
+Lee RS et al., 2017, The Cancer Imaging Archive.
+
+---
+
+### INBreast
+
+A full-field digital mammography dataset with annotated breast lesions.
+
+Dataset link:
+
+https://medicalresearch.inescporto.pt/breastresearch/index.php/Get_INbreast_Database
+
+Reference:
+Moreira IC et al., Academic Radiology, 2012.
+
+---
+
+# Project Structure
+breast-lesion-detection
+│
+├── results/ # graphs and experimental outputs
+├── experiments/ # experiment configurations
+├── BreastLesion_Project_All_Models_Added.ipynb
+├── requirements.txt
+└── README.md
